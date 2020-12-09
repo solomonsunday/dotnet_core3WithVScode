@@ -9,5 +9,6 @@ namespace netCore3.Models
         public int Defence { get; set; } = 10;
         public int intelligence { get; set; } = 10;
         public RpgClass Class { get; set; } = RpgClass.knight;
+        public User User { get; set; }
     }
 }
