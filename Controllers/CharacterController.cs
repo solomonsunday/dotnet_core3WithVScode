@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using netCore3.Dtos.Character;
 using netCore3.Models;
@@ -8,6 +10,7 @@ using netCore3.Services.CharacterServices;
 
 namespace netCore3.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class CharacterController : ControllerBase
@@ -23,6 +26,7 @@ namespace netCore3.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> Get()
         {
+            int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
             return Ok(await _characterService.GetAllCharcters());
         }
 
