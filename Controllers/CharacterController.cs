@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using netCore3.Dtos.Character;
 using netCore3.Models;
-using netCore3.Services.CharacterServices;
+using netCore3.Services.CharacterService;
 
 namespace netCore3.Controllers
 {
@@ -26,7 +26,7 @@ namespace netCore3.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> Get()
         {
-            int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            // int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
             return Ok(await _characterService.GetAllCharcters());
         }
 
@@ -53,7 +53,6 @@ namespace netCore3.Controllers
             }
             return Ok();
         }
-
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

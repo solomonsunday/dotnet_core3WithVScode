@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using netCore3.Dtos.Character;
 using netCore3.Models;
 
-namespace netCore3.Services.CharacterServices
+namespace netCore3.Services.CharacterService
 {
     public interface ICharacterService
 
