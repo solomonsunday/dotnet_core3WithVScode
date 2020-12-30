@@ -1,4 +1,4 @@
-namespace netCore3.Dtos.Waepon
+namespace netCore3.Dtos.Weapon
 {
     public class GetWeaponDto
     {

@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using netCore3.Dtos.Waepon;
+using netCore3.Dtos.Weapon;
 using netCore3.Services.WeaponService;
 
 namespace netCore3.Controllers

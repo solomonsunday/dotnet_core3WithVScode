@@ -2,7 +2,7 @@ using System.Linq;
 using AutoMapper;
 using netCore3.Dtos.Character;
 using netCore3.Dtos.Skill;
-using netCore3.Dtos.Waepon;
+using netCore3.Dtos.Weapon;
 using netCore3.Models;
 
 namespace netCore3

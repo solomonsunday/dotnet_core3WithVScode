@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using netCore3.Data;
 using netCore3.Dtos.Character;
-using netCore3.Dtos.Waepon;
+using netCore3.Dtos.Weapon;
 using netCore3.Models;
 
 namespace netCore3.Services.WeaponService

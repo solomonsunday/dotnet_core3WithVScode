@@ -19,6 +19,7 @@ using Microsoft.IdentityModel.Tokens;
 using netCore3.Data;
 using netCore3.Services.CharacterService;
 using netCore3.Services.CharacterSkillService;
+using netCore3.Services.FightService;
 using netCore3.Services.WeaponService;
 
 namespace netCore3._1
@@ -55,6 +56,7 @@ namespace netCore3._1
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IWeaponService, WeaponService>();
             services.AddScoped<ICharacterSkillService, CharacterSkillService>();
+            services.AddScoped<IFightService, FightService>();
 
         }
 

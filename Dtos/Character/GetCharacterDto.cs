@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using netCore3.Dtos.Skill;
-using netCore3.Dtos.Waepon;
+using netCore3.Dtos.Weapon;
 using netCore3.Models;
 
 namespace netCore3.Dtos.Character
@@ -16,6 +16,9 @@ namespace netCore3.Dtos.Character
         public RpgClass Class { get; set; } = RpgClass.knight;
         public GetWeaponDto Weapon { get; set; }
         public List<GetSkillDto> Skills { get; set; }
+        public int Fights { get; set; }
+        public int Victories { get; set; }
+        public int Defeats { get; set; }
     }
 
 }
