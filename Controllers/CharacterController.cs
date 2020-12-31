@@ -10,7 +10,7 @@ using netCore3.Services.CharacterService;
 
 namespace netCore3.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Player,Admin")]
     [ApiController]
     [Route("[controller]")]
     public class CharacterController : ControllerBase
