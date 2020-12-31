@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using netCore3.Data;
 using netCore3.Dtos.Fight;
@@ -12,8 +13,10 @@ namespace netCore3.Services.FightService
     public class FightService : IFightService
     {
         private readonly DataContext _context;
-        public FightService(DataContext context)
+        private readonly IMapper _mapper;
+        public FightService(DataContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
 
         }
@@ -124,7 +127,8 @@ namespace netCore3.Services.FightService
             };
             try
             {
-                List<Character> characters = await _context.Characters.Include(c => c.Weapon).Include(c => c.CharacterSkills).ThenInclude(cs => cs.Skill)
+                List<Character> characters = await _context.Characters.Include(c => c.Weapon)
+                .Include(c => c.CharacterSkills).ThenInclude(cs => cs.Skill)
                 .Where(c => request.CharacterIds.Contains(c.Id)).ToListAsync();
 
                 bool defeated = false;
@@ -152,7 +156,7 @@ namespace netCore3.Services.FightService
 
                         }
 
-                        response.Data.Log.Add($"{attacker.Name} attacks {opponent.Name} using {attacker.Id} with {(damage >= 0 ? damage : 0)} damage.");
+                        response.Data.Log.Add($"{attacker.Name} attacks {opponent.Name} using {attackUsed} with {(damage >= 0 ? damage : 0)} damage.");
 
                         if (opponent.Hitpoint <= 0)
                         {
@@ -182,6 +186,23 @@ namespace netCore3.Services.FightService
             }
 
             return response;
+        }
+
+        public async Task<ServiceResponse<List<HighScoreDto>>> GetHighScore()
+        {
+            List<Character> characters = await _context.Characters
+            .Where(c => c.Fights > 0)
+            .OrderByDescending(c => c.Victories)
+            .ThenBy(c => c.Defeats)
+            .ToListAsync();
+
+            var response = new ServiceResponse<List<HighScoreDto>>
+            {
+                Data = characters.Select(c => _mapper.Map<HighScoreDto>(c)).ToList()
+            };
+
+            return response;
+
         }
     }
 

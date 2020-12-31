@@ -1,6 +1,7 @@
 using System.Linq;
 using AutoMapper;
 using netCore3.Dtos.Character;
+using netCore3.Dtos.Fight;
 using netCore3.Dtos.Skill;
 using netCore3.Dtos.Weapon;
 using netCore3.Models;
@@ -17,6 +18,7 @@ namespace netCore3
             CreateMap<AddCharacterDto, Character>();
             CreateMap<Weapon, GetWeaponDto>();
             CreateMap<Skill, GetSkillDto>();
+            CreateMap<Character, HighScoreDto>();
         }
     }
 }

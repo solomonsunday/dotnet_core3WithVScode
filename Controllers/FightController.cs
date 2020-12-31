@@ -6,7 +6,7 @@ using netCore3.Services.FightService;
 namespace netCore3.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class FightController : ControllerBase
     {
         private readonly IFightService _fightService;
@@ -31,6 +31,12 @@ namespace netCore3.Controllers
         public async Task<IActionResult> Fight(FightRequestDto request)
         {
             return Ok(await _fightService.Fight(request));
+        }
+
+
+        public async Task<IActionResult> GetHighScore()
+        {
+            return Ok(await _fightService.GetHighScore());
         }
 
     }
