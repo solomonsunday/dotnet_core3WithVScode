@@ -12,6 +12,7 @@ namespace netCore3.Models
         public int intelligence { get; set; } = 10;
         public RpgClass Class { get; set; } = RpgClass.knight;
         public User User { get; set; }
+        public int UserId { get; set; }
         public Weapon Weapon { get; set; }
         public List<CharacterSkill> CharacterSkills { get; set; }
         public int Fights { get; set; }
